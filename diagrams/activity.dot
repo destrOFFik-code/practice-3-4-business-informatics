@@ -1,0 +1,19 @@
+digraph G {
+rankdir=TB; bgcolor="white"; pad=0.2; nodesep=0.25; ranksep=0.35;
+node [shape=box, style="rounded,filled", fontname="Arial", fontsize=11, color="#2F5597", fillcolor="#EAF2F8"];
+edge [fontname="Arial", fontsize=9, color="#555555"];
+start [label="Начало", shape=oval, fillcolor="#E2F0D9", color="#548235"];
+end [label="Завершение", shape=oval, fillcolor="#FCE4D6", color="#C65911"];
+n1 [label="Получить количество, цену и скидку", shape=parallelogram, fillcolor="#E4DFEC", color="#7030A0"];
+n2 [label="Проверить диапазоны:\nqty: 1..10000\nprice: 0.01..5000000\ndiscount: 0..30"];
+n3 [label="Данные корректны?", shape=diamond, fillcolor="#FFF2CC", color="#BF9000"];
+n4 [label="Вычислить базовую сумму:\nbase = price × qty"];
+n5 [label="Применить скидку:\ndiscounted = base × (1 - discount / 100)"];
+n6 [label="Рассчитать НДС варианта 7:\nvat = discounted × 40 / 100"];
+n7 [label="Итог:\ntotal = discounted + vat"];
+n8 [label="Вывести результат с двумя знаками после запятой"];
+err [label="Вывести причину ошибки"];
+start -> n1 -> n2 -> n3;
+n3 -> n4 [label="да"]; n3 -> err [label="нет"];
+n4 -> n5 -> n6 -> n7 -> n8 -> end; err -> end;
+}

@@ -1,0 +1,10 @@
+digraph C {
+rankdir=TB; bgcolor="white"; pad=0.2; nodesep=0.35; ranksep=0.4;
+node [shape=record, style="filled", fontname="Arial", fontsize=10, color="#2F5597", fillcolor="#F7FBFF"];
+edge [fontname="Arial", fontsize=9, color="#555555"];
+main [label="{Main|+ main(String[] args) : void}"];
+calc [label="{OrderCalculator|+ MIN_QUANTITY : int = 1\l+ MAX_QUANTITY : int = 10000\l+ MIN_PRICE : double = 0.01\l+ MAX_PRICE : double = 5000000.00\l+ MIN_DISCOUNT : double = 0.0\l+ MAX_DISCOUNT : double = 30.0\l+ VAT_RATE : double = 40.0\l|+ isValid(int,double,double) : boolean\l+ validationError(int,double,double) : String\l+ calculateBase(int,double) : double\l+ applyDiscount(double,double) : double\l+ calculateVat(double,double) : double\l+ calculateTotal(int,double,double) : double\l}"];
+self [label="{SelfCheck|+ main(String[] args) : void}"];
+main -> calc [label="использует", style=dashed];
+self -> calc [label="проверяет", style=dashed];
+}
